@@ -11,6 +11,8 @@ net_profit = 0
 monthly_changes = []
 average_change = 0
 last_row = 0
+max_increase = 0
+max_decrease = 0
 
 # Open csv
 with open(file1, newline="") as csvfile:
@@ -29,8 +31,19 @@ with open(file1, newline="") as csvfile:
         monthly_changes.append(monthly_change)
         last_row = current_row
 
+        # Check for greatest/least change
+        if monthly_change > max_increase:
+            max_increase = monthly_change
+            increase_date = row[0]
+        elif monthly_change < max_decrease:
+            max_decrease = monthly_change
+            decrease_date = row[0]
+
+
 # Print results
 print("Total Months: " + str(count))
 print("Net Profit: " + str(net_profit))
 average_change = sum(monthly_changes)/len(monthly_changes)
 print("Average Change: " + average_change)
+print("Greatest Increase in Profits: " + increase_date + str(max_increase))
+print("Greatest Decrease in Profits: " + decrease_date + str(max_decrease))
