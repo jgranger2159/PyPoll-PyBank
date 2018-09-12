@@ -41,9 +41,21 @@ with open(file1, newline="") as csvfile:
 
 
 # Print results
+print("FINANCIAL ANALYSIS")
+print("-"*20)
 print("Total Months: " + str(count))
 print("Net Profit: " + str(net_profit))
 average_change = sum(monthly_changes)/len(monthly_changes)
 print("Average Change: " + str(average_change))
 print("Greatest Increase in Profits: " + str(increase_date) + " " + str(max_increase))
 print("Greatest Decrease in Profits: " + str(decrease_date) + " " + str(max_decrease))
+
+# Export results to Financial_Analysis.txt
+f = open("Financial_Analysis.txt", "x")
+f.write("FINANCIAL ANALYSIS")
+f.write("-"*20)
+f.write("Total Months: " + str(count))
+f.write("Net Profit: " + str(net_profit))
+f.write("Average Change: " + str(average_change))
+f.write("Greatest Increase in Profits: " + str(increase_date) + " " + str(max_increase))
+f.write("Greatest Decrease in Profits: " + str(decrease_date) + " " + str(max_decrease))
